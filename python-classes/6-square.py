@@ -49,6 +49,7 @@ class Square:
         """Public instance method - prints square with #"""
         if self.__size == 0:
             print()
+            return
 
         for y_position in range(self.__position[1]):
             print()
