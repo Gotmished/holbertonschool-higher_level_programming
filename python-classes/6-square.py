@@ -3,10 +3,16 @@
 
 
 class Square:
-    """Class represents a square with a certain size and position in space"""
+    """Class represents a square with a certain size and position in space
+
+    Attributes:
+    __size (int): the size of the square
+    __position (tuple): the position of the square
+    """
     def __init__(self, size=0, position=(0, 0)):
-            self.size = size
-            self.position = position
+        """Initialises the square"""
+        self.__size = size
+        self.__position = position
 
     @property
     def size(self):

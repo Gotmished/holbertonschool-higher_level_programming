@@ -3,9 +3,15 @@
 
 
 class Square:
-    """Class represents the Square with a certain size"""
+    """Class represents a square with a certain size
+
+    Attributes:
+    __size (int): the size of the square
+    """
+
     def __init__(self, size=0):
-            self.size = size
+        """Initialises the square"""
+        self.__size = size
 
     @property
     def size(self):
@@ -23,7 +29,7 @@ class Square:
             self.__size = value
 
     def area(self):
-        """Public instance method - returns the area of the Square"""
+        """Public instance method - returns the area of the square"""
         return(self.__size * self.__size)
 
     def my_print(self):
