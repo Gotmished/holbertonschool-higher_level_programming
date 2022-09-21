@@ -11,6 +11,7 @@ class Rectangle:
     """
 
     def __init__(self, width=0, height=0):
+        """Initialises the rectangle"""
         self.width = width
         self.height = height
 
@@ -62,6 +63,6 @@ class Rectangle:
             for i in range(self.height):
                 for j in range(self.width):
                     str = str + "#"
-                if i != self.height -1:
+                if i != self.height - 1:
                     str = str + "\n"
         return(str)
