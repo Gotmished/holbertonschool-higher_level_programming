@@ -106,3 +106,15 @@ Checking more than two args:
 Checking long int:
 	 >>> add_integer(99999999999999999999, 1)
 	 100000000000000000000
+
+Checking for float overflow:
+	 >>> add_integer(0, float('inf'))
+	 Traceback (most recent call last):
+	 ...
+	 OverflowError: cannot convert float infinity to integer
+
+Checking addition with NaN:
+	 >>> add_integer(0, float('nan'))
+	 Traceback (most recent call last):
+	 ...
+	 ValueError: cannot convert float NaN to integer
