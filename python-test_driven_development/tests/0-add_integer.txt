@@ -1,0 +1,108 @@
+The ``0-add_integer`` module
+============================
+
+Using ``add_integer``
+---------------------
+
+Importing function from module:
+	  >>> add_integer = __import__("0-add_integer").add_integer
+
+Checking for module documentation:
+	 >>> mod = __import__("0-add_integer").__doc__
+	 >>> len(mod) > 1
+	 True
+
+Checking for function documentation:
+	 >>> func = __import__("0-add_integer").add_integer.__doc__
+	 >>> len(func) > 1
+	 True
+
+Checking regular addition:
+	 >>> add_integer(8, 7)
+	 15
+
+Checking addition negative positive:
+	 >>> add_integer(-4, 3)
+	 -1
+
+Checking addition positive negative:
+	 >>> add_integer(5, -2)
+	 3
+
+Checking addition negative negative:
+	 >>> add_integer(-9, -6)
+	 -15
+
+Checking addition string with int:
+	 >>> add_integer("Hello", 8)
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: a must be an integer
+
+Checking addition int with string:
+	 >>> add_integer(8, "Hello")
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: b must be an integer
+
+Checking addition int with float:
+	 >>> add_integer(2, 10.7)
+	 12
+
+Checking addition float with int:
+	 >>> add_integer(100.6, 4)
+	 104
+
+Checking addition float with float:
+	 >>> add_integer(87.2, 1.09)
+	 88
+
+Checking addition incorrect type with correct type:
+	 >>> add_integer([1, 4, 3], 7)
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: a must be an integer
+
+Checking addition correct type with incorrect type:
+	 >>> add_integer(7, "2")
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: b must be an integer
+
+Checking addition two incorrect types:
+	 >>> add_integer("90", [1, 7, 5])
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: a must be an integer
+
+Checking addition correct type with None:
+	 >>> add_integer(2, None)
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: b must be an integer
+
+Checking addition None with correct type:
+	 >>> add_integer(None, 8)
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: a must be an integer
+
+Checking no args:
+	 >>> add_integer()
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: add_integer() missing 1 required positional argument: 'a'
+
+Checking one arg:
+	 >>> add_integer(8)
+	 106
+
+Checking more than two args:
+	 >>> add_integer(7, 6, 0)
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
+
+Checking long int:
+	 >>> add_integer(99999999999999999999, 1)
+	 100000000000000000000
