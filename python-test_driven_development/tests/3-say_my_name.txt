@@ -7,6 +7,16 @@ Using ``say_my_name``
 Importing function from module:
 	>>> say_my_name = __import__("3-say_my_name").say_my_name
 
+Checking for module docstring:
+	 >>> mod = __import__("3-say_my_name").__doc__
+	 >>> len(mod) > 1
+	 True
+
+Checking for function docstring:
+	 >>> func = __import__("3-say_my_name").say_my_name.__doc__
+         >>> len(func) > 1
+         True
+	 
 Checking string with non-string:
 	>>> say_my_name("Hamish", 8)
 	Traceback (most recent call last):
