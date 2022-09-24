@@ -1,0 +1,62 @@
+The ``3-say_my_name`` module
+============================
+
+Using ``say_my_name``
+---------------------
+
+Importing function from module:
+	>>> say_my_name = __import__("3-say_my_name").say_my_name
+
+Checking for module documentation:
+	>>> mod = __import__("3-say_my_name").__doc__
+	>>> len(mod) > 1
+	True
+
+Checking for function
+	>>> func = __import__("3-say_my_name").say_my_name.__doc__
+	>>> len(func) > 1
+	True
+
+Checking string with non-string:
+	>>> say_my_name("Hamish", 8)
+	Traceback (most recent call last):
+	...
+	TypeError: last_name must be a string
+
+Checking non-string with string:
+	>>> say_my_name([2], "Ross")
+	Traceback (most recent call last):
+	...
+	TypeError: first_name must be a string
+
+Checking string with None:
+	>>> say_my_name("Hamish", None)
+	Traceback (most recent call last):
+	...
+	TypeError: last_name must be a string
+
+Checking None with string:
+	>>> say_my_name(None, "Ross")
+	Traceback (most recent call last):
+	...
+	TypeError: first_name must be a string
+
+Checking for no args:
+	>>> say_my_name()
+	Traceback (most recent call last):
+	...
+	TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+Checking for single arg:
+	>>> say_my_name("Hamish")
+	My name is Hamish
+
+Checking for normal functioning:
+	>>> say_my_name("Hamish", "Ross")
+	My name is Hamish Ross
+
+Checking for more than two args:
+	>>> say_my_name("Hamish", "Alexander", "Ross")
+	Traceback (most recent call last):
+	...
+	TypeError: say_my_name() takes from 1 to 2 positional arguments but 3 were given
