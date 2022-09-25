@@ -1,11 +1,11 @@
 The ``5-text_indentation`` module
 =================================
 
-Using ``print_square``
+Using ``text_indentation``
 ----------------------
 
 Importing function from module:
-	>>> text_indentation = __import("5-text_indentation").text_indentation
+	>>> text_indentation = __import__("5-text_indentation").text_indentation
 
 Checking for module documentation:
 	>>> mod = __import__("5-text_indentation").__doc__
@@ -25,7 +25,7 @@ Checking for handling None:
 
 Checking for handling no arguments:
 	 >>> text_indentation()
-	Traceback (most recent call last):
+	 Traceback (most recent call last):
 	 ...
 	 TypeError: text_indentation() missing 1 required positional argument: 'text'
 
@@ -51,7 +51,7 @@ Checking handling of non-string:
 
 Checking for handling of newline in string:
 	 >>> text_indentation("\nHamish: Ross")
-	<BLANKLINE>
-	Hamish:
-	<BLANKLINE>
-	Ross
+	 <BLANKLINE>
+	 Hamish:
+	 <BLANKLINE>
+	 Ross

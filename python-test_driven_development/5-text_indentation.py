@@ -17,15 +17,14 @@ def text_indentation(text):
     flag = 0
     for char in range(len(text)):
         if flag == 1:
-            char = char + 1
-            if text[char] != ' ':
+            if text[char + 1] != " ":
                 flag = 0
         else:
+#            if text[char] == " ":
+#                flag = 1
+#            else:
+#                flag == 0
             print(f"{text[char]}", end="")
             if text[char] in [".", ":", "?"]:
+                flag = 1
                 print("\n")
-                if text[char + 1] == ' ':
-                    flag = 1
-                    continue
-                else:
-                    flag == 0
