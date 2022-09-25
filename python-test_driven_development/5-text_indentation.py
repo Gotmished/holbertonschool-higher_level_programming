@@ -23,8 +23,8 @@ def text_indentation(text):
         else:
             print(f"{text[char]}", end="")
             if text[char] in [".", ":", "?"]:
-                print("\n\n")
-                if text[char + 1] ==  ' ':
+                print("\n")
+                if text[char + 1] == ' ':
                     flag = 1
                     continue
                 else:
