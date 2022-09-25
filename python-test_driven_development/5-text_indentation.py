@@ -18,12 +18,10 @@ def text_indentation(text):
     for char in range(len(text)):
         if flag == 1:
             if text[char + 1] != " ":
+                if text[char] != " ":
+                    print(f"{text[char]}", end="")
                 flag = 0
         else:
-#            if text[char] == " ":
-#                flag = 1
-#            else:
-#                flag == 0
             print(f"{text[char]}", end="")
             if text[char] in [".", ":", "?"]:
                 flag = 1

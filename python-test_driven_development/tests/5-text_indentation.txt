@@ -42,7 +42,8 @@ Checking for normal functioning:
 	 Yes:
 	 <BLANKLINE>
 	 it's ready.
-
+	 <BLANKLINE>
+	 
 Checking handling of non-string:
 	 >>> text_indentation(8)
 	 Traceback (most recent call last):
