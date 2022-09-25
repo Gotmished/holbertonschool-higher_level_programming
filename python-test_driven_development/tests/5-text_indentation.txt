@@ -1,0 +1,57 @@
+The ``5-text_indentation`` module
+=================================
+
+Using ``print_square``
+----------------------
+
+Importing function from module:
+	>>> text_indentation = __import("5-text_indentation").text_indentation
+
+Checking for module documentation:
+	>>> mod = __import__("5-text_indentation").__doc__
+	>>> len(mod) > 1
+	True
+
+Checking for function documentation:
+	>>> func = __import__("5-text_indentation").text_indentation.__doc__
+	>>> len(func) > 1
+	True
+
+Checking for handling None:
+	>>> text_indentation(None)
+	Traceback (most recent call last):
+	...
+	TypeError: text must be a string
+
+Checking for handling no arguments:
+	 >>> text_indentation()
+	Traceback (most recent call last):
+	 ...
+	 TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+Checking for handling more than one argument:
+	 >>> text_indentation("Hamish", "Ross")
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: text_indentation() takes 1 positional argument but 2 were given
+
+Checking for normal functioning:
+	 >>> text_indentation("Hello? Yes: it's ready.")
+	 Hello?
+	 <BLANKLINE>
+	 Yes:
+	 <BLANKLINE>
+	 it's ready.
+
+Checking handling of non-string:
+	 >>> text_indentation(8)
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: text must be a string
+
+Checking for handling of newline in string:
+	 >>> text_indentation("\nHamish: Ross")
+	<BLANKLINE>
+	Hamish:
+	<BLANKLINE>
+	Ross
