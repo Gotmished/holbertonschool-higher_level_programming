@@ -5,7 +5,6 @@ that is empty
 """
 
 
-
 class BaseGeometry:
     """
     An empty class
