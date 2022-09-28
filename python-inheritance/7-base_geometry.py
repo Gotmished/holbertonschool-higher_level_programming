@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Module "5-base_geometry" including "BaseGeometry" class
+Module "7-base_geometry" including "BaseGeometry" class
 and public instance methods "area" and "integer_validator"
 """
 
