@@ -17,7 +17,7 @@ class BaseGeometry:
 
     def integer_validator(self, name, value):
         """
-        Validates attribute value associated with attribute name
+        Validates arg value associated with arg name
         """
         if not isinstance(value, int):
             raise TypeError(f"{name} must be an integer")
