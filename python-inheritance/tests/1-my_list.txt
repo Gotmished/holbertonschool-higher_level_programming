@@ -13,8 +13,8 @@ Checking for module documentation:
 	 True
 
 Checking for class documentation:
-	 >>> func = __import__("1-my_list").MyList.__doc__
-	 >>> len(func) > 1
+	 >>> cls = __import__("1-my_list").MyList.__doc__
+	 >>> len(cls) > 1
 	 True
 
 Checking for method documentation:
@@ -27,7 +27,7 @@ Checking empty list:
 	 >>> my_list.print_sorted()
 	 []
 
-Checking that appendng works:
+Checking that appending works:
 	 >>> my_list.append(1)
 	 >>> my_list.append(3)
 	 >>> my_list.append(2)
