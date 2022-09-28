@@ -45,7 +45,7 @@ Checking one argument for integer validator:
 	  >>> bg.integer_validator("age")
 	  Traceback (most recent call last):
 	  ...
-TypeError: integer_validator() missing 1 required positional argument: 'value'
+	  TypeError: integer_validator() missing 1 required positional argument: 'value'
 
 Checking correct functioning of integer_validator:
 	  >>> bg.integer_validator("age", 33)
@@ -59,5 +59,5 @@ Checking negative number for value:
 Checking for more than two arguments:
 	  >>> bg.integer_validator("name", "Hamish", 33)
 	  Traceback (most recent call last):
- 	  ...
-	  TypeError: integer_validator() takes 3 positional arguments but 4 were given	  
+	  ...
+	  TypeError: integer_validator() takes 3 positional arguments but 4 were given
