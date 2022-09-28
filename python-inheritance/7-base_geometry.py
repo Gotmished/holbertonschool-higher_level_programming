@@ -17,7 +17,8 @@ class BaseGeometry:
 
     def integer_validator(self, name, value):
         """
-        Validates arg value associated with arg name
+        Raises exceptions if an int is not supplied, or
+        if a negative int is supplied
         """
         if not isinstance(value, int):
             raise TypeError(f"{name} must be an integer")
