@@ -3,6 +3,7 @@
 Module containing "Student" class
 """
 
+
 class Student:
     """
     Representation of a student
