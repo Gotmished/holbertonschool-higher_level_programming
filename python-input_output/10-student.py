@@ -23,22 +23,21 @@ class Student:
         a list of strings, a new dictionary is returned
         comprising only the attributes from attrs
         """
-        if attrs is None:
+        if isinstance(attrs, list):
+            for element in attrs:
+                if not isinstance(element, str):
+                    return self.__dict__
+                else:
+                    return {element: self.__dict__[element]
+                            for element in attrs if
+                            hasattr(self, element)}
+        else:
             return self.__dict__
 
-        attr_dict = {}
-        for element in attrs:
-            try:
-                attr_dict[element] = self.__dict__[element]
-            except:
-                pass
-            return attr_dict
-#        else:
-#            if isinstance(attrs, list):
-#                for element in attrs:
-#                    if not isinstance(element, str):
-#                        return self.__dict__
-#                    else:
-#                        return {element: self.__dict__[element]
-#                                for element in attrs if
-#                                hasattr(self, element)}
+#        attr_dict = {}
+#        for element in attrs:
+#            try:
+#                attr_dict[element] = self.__dict__[element]
+#            except:
+#                pass
+#            return attr_dict
