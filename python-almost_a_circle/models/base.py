@@ -50,3 +50,16 @@ class Base:
 
         with open(filename, "w", encoding="UTF-8") as f:
             f.write(cls.to_json_string(list_ob))
+
+    @classmethod
+    def create(cls, **dictionary):
+        """
+        Using a dummy instance, returns an
+        instance with pre-set attributes using kwargs
+        """
+        if cls.__name__ == "Square":
+            dummy = cls(8)
+        elif cls.__name__ == "Rectangle":
+            dummy = cls(8, 8)
+        dummy.update(**dictionary)
+        return dummy
