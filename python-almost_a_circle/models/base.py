@@ -5,6 +5,7 @@ Module containing "Base" class
 
 import json
 
+
 class Base:
     """
     The base class
