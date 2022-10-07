@@ -4,6 +4,7 @@ Module containing "Base" class
 """
 
 import json
+from os.path import exists
 
 
 class Base:
@@ -56,7 +57,7 @@ class Base:
         """Returns a deserialised list of instances"""
         list_ob = []
         filename = cls.__name__ + ".json"
-        if filename:
+        if exists(filename):
             with open(filename, "r") as f:
                 list_ob = cls.from_json_string(f.read())
                 for element, value in enumerate(list_ob):
