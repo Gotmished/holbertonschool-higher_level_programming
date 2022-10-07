@@ -39,7 +39,7 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
         """
-        Writes JSON representation of list_objs to a file.
+        Writes JSON representation of a list of instances to a file.
         That is, serialises the list
         """
         list_ob = []
@@ -50,6 +50,18 @@ class Base:
 
         with open(filename, "w", encoding="UTF-8") as f:
             f.write(cls.to_json_string(list_ob))
+
+    @classmethod
+    def load_from_file(cls):
+        """Returns a deserialised list of instances"""
+        list_ob = []
+        filename = cls.__name__ + ".json"
+        if filename:
+            with open(filename, "r") as f:
+                list_ob = cls.from_json_string(f.read())
+                for element, value in enumerate(list_ob):
+                    list_ob[element] = cls.create(**list_ob[element])
+        return list_ob
 
     @classmethod
     def create(cls, **dictionary):
