@@ -8,7 +8,7 @@ import inspect
 import unittest
 from models import square
 from models.base import Base
-Square = rectangle.Square
+Square = square.Square
 
 
 class TestDocsSquare(unittest.TestCase):
@@ -29,11 +29,12 @@ class TestDocsSquare(unittest.TestCase):
 
     def test_func_docstrings(self):
         """Tests for the presence of documentation in all functions"""
-        for func in self.sectangle_funcs:
-            if not func[1].__doc__:
-                print(f"{func[0]} lacks documentation")
-            else:
-                self.assertTrue(len(func[1].__doc__) >= 1)
+        self.assertTrue(len(func[1].__doc__) >= 1)
+#        for func in self.square_funcs:
+#            if not func[1].__doc__:
+#                print(f"{func[0]} lacks documentation")
+#            else:
+
 
 
 class TestSquare(unittest.TestCase):
@@ -46,14 +47,14 @@ class TestSquare(unittest.TestCase):
         cls.s1 = Square(1)
         cls.s2 = Square(2, 3)
         cls.s3 = Square(4, 5, 6)
-        cls.s4 = Rectangle(7, 8, 9, 10)
+        cls.s4 = Square(7, 8, 9, 10)
 
     def test_id(self):
         """Tests for handling id"""
         self.assertEqual(self.s1.id, 1)
         self.assertEqual(self.s2.id, 2)
         self.assertEqual(self.s4.id, 10)
-        self.assertEqual(self.r3.id, 3)
+        self.assertEqual(self.s3.id, 3)
 
     def test_size(self):
         """Tests setting of size"""
@@ -98,7 +99,7 @@ class TestSquare(unittest.TestCase):
     def test_y_below_zero(self):
         """Test handling ints < 0 for y"""
         with self.assertRaises(ValueError):
-            Rectangle(1, 4, -1)
+            Square(1, 4, -1)
 
     def test_area(self):
         """Testing area output"""
