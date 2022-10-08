@@ -40,16 +40,17 @@ class TestDocsRectangle(unittest.TestCase):
     def test_pycode_class(self):
         """ Checks pycodestyle for base """
         style = pycodestyle.StyleGuide(quiet=True)
-        result = style.check_files(['models/base.py'])
+        result = style.check_files(['models/rectangle.py'])
         self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warnings).")
 
     def test_pycode_test(self):
         """ Checks pycodestyle for test_base """
         style = pycodestyle.StyleGuide(quiet=True)
-        result = style.check_files(['tests/test_models/test_base.py'])
+        result = style.check_files(['tests/test_models/test_rectangle.py'])
         self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warnings).")
+
 
 class TestRectangle(unittest.TestCase):
     """Tests class functionality"""
@@ -197,7 +198,7 @@ class TestRectangle(unittest.TestCase):
     def test_None_save_to_file(self):
         """Testing None with save_to_file"""
         Rectangle.save_to_file(None)
-        with open("Rectangle.json", "r", encoding='utf-8') as f:
+        with open("Rectangle.json", "r") as f:
             self.assertEqual(f.read(), "[]")
 
     def test_empty_save_to_file(self):
@@ -229,6 +230,3 @@ class TestRectangle(unittest.TestCase):
         if os.path.exists(filename):
             os.remove(filename)
         self.assertEqual(Rectangle.load_from_file(), [])
-
-if __name__ == "__main__":
-    unittest.main()

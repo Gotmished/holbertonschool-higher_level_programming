@@ -4,6 +4,9 @@ Contains tests for Square subclass of
 Rectangle subclass of Base class
 """
 
+import os
+import json
+import pycodestyle
 import inspect
 import unittest
 from models import square
@@ -29,12 +32,22 @@ class TestDocsSquare(unittest.TestCase):
 
     def test_func_docstrings(self):
         """Tests for the presence of documentation in all functions"""
-        self.assertTrue(len(func[1].__doc__) >= 1)
-#        for func in self.square_funcs:
-#            if not func[1].__doc__:
-#                print(f"{func[0]} lacks documentation")
-#            else:
+        for func in self.square_funcs:
+            self.assertTrue(len(func[1].__doc__) >= 1)
 
+    def test_pycode_class(self):
+        """ Checks pycodestyle for base """
+        style = pycodestyle.StyleGuide(quiet=True)
+        result = style.check_files(['models/square.py'])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warnings).")
+
+    def test_pycode_test(self):
+        """ Checks pycodestyle for test_base """
+        style = pycodestyle.StyleGuide(quiet=True)
+        result = style.check_files(['tests/test_models/test_square.py'])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warnings).")
 
 
 class TestSquare(unittest.TestCase):
@@ -80,6 +93,8 @@ class TestSquare(unittest.TestCase):
         """Test handling ints <= 0 for size"""
         with self.assertRaises(ValueError):
             Square(-8, 1, 4, 6)
+        with self.assertRaises(ValueError):
+            Square(0)
 
     def test_non_coordinate_x(self):
         """Tests for handling of non-coordinate"""
@@ -114,3 +129,77 @@ class TestSquare(unittest.TestCase):
         """Test handling display with too many args"""
         with self.assertRaises(TypeError):
             self.s3.display(1)
+
+    def test___str___exists(self):
+        """Testing normal functioning of __str__"""
+        self.assertEqual(self.s1.__str__(), '[Square] (1) 0/0 - 1')
+
+    def test_to_dictionary(self):
+        """Testing normal functioning of to_dictionary"""
+        self.assertTrue(isinstance(self.s3.to_dictionary(), dict))
+
+    def test_update_args(self):
+        """Testing normal functioning of update with *args"""
+        s = Square(1, 0, 0, 1)
+        self.assertEqual(str(s), "[Square] (1) 0/0 - 1")
+        s.update(89)
+        self.assertEqual(str(s), "[Square] (89) 0/0 - 1")
+        s.update(89, 2)
+        self.assertEqual(str(s), "[Square] (89) 0/0 - 2")
+        s.update(89, 2, 3)
+        self.assertEqual(str(s), "[Square] (89) 3/0 - 2")
+        s.update(89, 2, 3, 4)
+        self.assertEqual(str(s), "[Square] (89) 3/4 - 2")
+
+    def test_update_kwargs(self):
+        """Testing normal functioning of update with **kwargs"""
+        s = Square(1, 0, 0, 1)
+        self.assertEqual(str(s), "[Square] (1) 0/0 - 1")
+        s.update(size=10)
+        self.assertEqual(str(s), "[Square] (1) 0/0 - 10")
+        s.update(size=11, x=2)
+        self.assertEqual(str(s), "[Square] (1) 2/0 - 11")
+        s.update(y=3, size=4, x=5, id=89)
+        self.assertEqual(str(s), "[Square] (89) 5/3 - 4")
+
+    def test_create(self):
+        """Testing normal functioning of create"""
+        s = {"id": 89, "size": 1, "x": 3, "y": 4}
+        sc = Square.create(**s)
+        self.assertEqual("[Square] (89) 3/4 - 1", str(sc))
+
+    def test_None_save_to_file(self):
+        """Testing None with save_to_file"""
+        Square.save_to_file(None)
+        with open("Square.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+
+    def test_empty_save_to_file(self):
+        """Testing empty list with save_to_file"""
+        Square.save_to_file([])
+        with open("Square.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+
+    def test_normal_save_to_file(self):
+        """Testing normal functioning of save_to_file with two instances"""
+        s1 = Square(1, 1, 1, 1)
+        s2 = Square(2, 2, 2, 2)
+        l_insts = [s1, s2]
+        Square.save_to_file(l_insts)
+        with open("Square.json", "r") as f:
+            l_dicts = [s1.to_dictionary(), s2.to_dictionary()]
+            self.assertEqual(Square.to_json_string(l_dicts), f.read())
+
+    def test_load_from_file(self):
+        """Testing load_from_file"""
+        l_insts = [self.s2, self.s3]
+        Square.save_to_file(l_insts)
+        l_from = Square.load_from_file()
+        self.assertEqual(str(l_from[1]), str(self.s3))
+
+    def test_load_from_file_no_file(self):
+        """Testing load_from_file when file doesn't exist"""
+        filename = "Square.json"
+        if os.path.exists(filename):
+            os.remove(filename)
+        self.assertEqual(Square.load_from_file(), [])
