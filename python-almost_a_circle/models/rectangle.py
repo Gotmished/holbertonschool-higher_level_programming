@@ -81,14 +81,18 @@ class Rectangle(Base):
 
     def display(self):
         """Public method that prints the rectangle using #"""
+        r_string = ""
         for y_position in range(self.__y):
-            print()
+            r_string += '\n'
         for i in range(self.__height):
             for x_position in range(self.__x):
-                print(" ", end="")
+                r_string += " "
             for j in range(self.__width):
-                print("#", end="")
-            print()
+                r_string += "#"
+            if i != self.__height - 1:
+                r_string += '\n'
+        print(r_string)
+        return r_string
 
     def __str__(self):
         """Returns a string representation of a rectangle"""
