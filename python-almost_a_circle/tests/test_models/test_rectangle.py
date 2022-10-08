@@ -203,6 +203,8 @@ class TestRectangle(unittest.TestCase):
 
     def test_empty_save_to_file(self):
         """Testing empty list with save_to_file"""
+        if os.path.exists("Rectangle.json"):
+            os.remove("Rectangle.json")
         Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as f:
             self.assertEqual(f.read(), "[]")

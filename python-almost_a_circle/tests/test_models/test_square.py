@@ -176,6 +176,8 @@ class TestSquare(unittest.TestCase):
 
     def test_empty_save_to_file(self):
         """Testing empty list with save_to_file"""
+        if os.path.exists("Square.json"):
+            os.remove("Square.json")
         Square.save_to_file([])
         with open("Square.json", "r") as f:
             self.assertEqual(f.read(), "[]")
