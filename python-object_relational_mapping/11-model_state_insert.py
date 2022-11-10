@@ -21,7 +21,7 @@ if __name__ == "__main__":
     LA_add = State(name="Louisiana")
     try:
         session.add(LA_add)
-    except:
+    except Exception:
         session.rollback()
         raise
     else:
