@@ -18,4 +18,7 @@ if __name__ == "__main__":
     Session.configure(bind=engine)
     session = Session()
     first_record = session.query(State).first()
-    print(f"{first_record.id}: {first_record.name}")
+    if not first_record:
+        print("Nothing")
+    else:
+        print(f"{first_record.id}: {first_record.name}")
