@@ -1,10 +1,9 @@
 #!/usr/bin/node
-
 const data = process.argv.splice(2);
 
-if (data.length === 0 || data.length === 1) {
+if (data.length < 2) {
   console.log('0');
 } else {
-  data.sort();
-  console.log(data[data.length - 2]);
+  data.reverse();
+  console.log(data[1]);
 }
