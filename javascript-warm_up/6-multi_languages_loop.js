@@ -6,4 +6,6 @@ const printLines = [
   'JavaScript is amazing'
 ];
 
-console.log(printLines.join('\r\n'));
+printLines.forEach(function (item, index) {
+  console.log(item);
+});
