@@ -4,10 +4,10 @@ const superSquare = require('./5-square');
 class Square extends superSquare {
   charPrint (c = undefined) {
     if (c === undefined) {
-      c = 'X';
+      super.print();
+    } else {
+      super.print(c);
     }
-    super.print(c);
   }
 }
-
 module.exports = Square;
