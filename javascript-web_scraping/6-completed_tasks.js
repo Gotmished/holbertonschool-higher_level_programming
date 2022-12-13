@@ -18,4 +18,4 @@ request
     console.log(compDict);
   });
 
-  // node 6-completed_tasks.js https://jsonplaceholder.typicode.com/todos
+// node 6-completed_tasks.js https://jsonplaceholder.typicode.com/todos
