@@ -1,24 +1,24 @@
 #!/usr/bin/node
 
-const listOrder = [];
-const dictValue = {};
 const request = require('request');
+const url = 'https://swapi-api.hbtn.io/api/films/';
 
-request.get('https://swapi-api.hbtn.io/api/films/' + process.argv[2], function (err, response, body) {
-  if (err) {
-    console.log(err);
+request.get(url + process.argv[2], function (error, response, body) {
+  if (error) {
+    console.log(error);
   }
   const characterURL = JSON.parse(body).characters;
-  listOrder.push(characterURL);
-  characterURL.forEach(function (eachUrl) {
-    request.get(eachUrl, function (err, response, body) {
-      if (err) {
-        console.log(err);
-      }
-      dictValue[eachUrl] = JSON.parse(body).name;
-    });
-  });
-  listOrder.forEach(function (url) {
-    console.log(dictValue[url]);
-  });
+  printEach(characterURL, 0);
 });
+
+const printEach = function (charactersURL, index) {
+  if (index + 1 <= charactersURL.length) {
+    request.get(charactersURL[index], function (error, response, body) {
+      if (error) {
+        console.log(error);
+      }
+      console.log(JSON.parse(body).name);
+      printEach(charactersURL, index + 1);
+    });
+  }
+};
