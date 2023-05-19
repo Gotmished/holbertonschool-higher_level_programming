@@ -1,0 +1,1 @@
+This directory contains tasks from project 0x16-javascript-warm_up

@@ -1,0 +1,1 @@
+This directory contains tasks from project 0x10-python-inheritance

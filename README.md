@@ -1,1 +1,1 @@
-Readme for higher level programming repository
+Projects concerning JavaScript, Python, and SQL

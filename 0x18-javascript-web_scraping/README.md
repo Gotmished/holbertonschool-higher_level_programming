@@ -1,0 +1,1 @@
+This directory contains tasks from project 0x18-javascript-web_scraping

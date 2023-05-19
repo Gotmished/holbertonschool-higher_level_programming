@@ -1,0 +1,1 @@
+This directory contains tasks from project 0x12-python-almost_a_circle

@@ -1,0 +1,1 @@
+This directory contains tasks from project 0x17-javascript_objects_scopes_closures
